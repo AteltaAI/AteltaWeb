@@ -12,7 +12,7 @@ const plyrProps = {
 function VideoPlayer() {
   return (
     <div className='video-player'>
-      <Plyr src={video} {...plyrProps} style={{height: '400px'}}/>
+      <Plyr src={video} {...plyrProps} style={{height: '720px', width: '1280px'}}/>
     </div>
   )
 }

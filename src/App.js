@@ -1,3 +1,5 @@
+import React from 'react'
+
 import './App.css';
 import VideoPlayer from './Components/VideoPlayer/VideoPlayer';
 import WebCam from './Components/WebCam/WebCam'

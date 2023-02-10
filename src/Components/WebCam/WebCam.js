@@ -5,6 +5,8 @@ import { drawConnectors, drawLandmarks } from "@mediapipe/drawing_utils";
 import "./WebCam.css"
 import { Pose } from "@mediapipe/pose";
 import Webcam from "react-webcam";
+
+var frame_counter = 0;
 // import Plot from 'react-plotly.js';
 
 const UserPose = () => {
@@ -13,8 +15,42 @@ const UserPose = () => {
   let camera = null;
   
   function onResults(results) {
+    frame_counter = frame_counter + 1;
+
     let landmarks = results.poseLandmarks;
-    console.log(landmarks)
+
+    // sending landmarks and frame information as json objects to the API 
+
+    let request_body = {};
+
+    request_body["frame_num"] = frame_counter;
+    request_body["frame_height"] = webcamRef.current.video.videoWidth;
+    request_body["frame_width"] = webcamRef.current.video.videoHeight;
+    request_body['keypoints'] = {}
+
+    for(var i = 0; i<33; i++){
+      request_body['keypoints'][i] = [landmarks[i].x, landmarks[i].y, landmarks[i].z];
+    }
+    
+    /*
+    This is how the API should work: 
+
+    The expected request body should be:
+
+    request_body = {
+      frame_num: frame_counter 
+      frame_height: frame_height, 
+      frame_width: frame_width, 
+      keypoints: {
+        ...
+      }
+    }
+
+    So now we need to apply to send this json object to our python bakend web server, through a POST request. 
+    */
+
+    // end of API request
+
     canvasRef.current.width = webcamRef.current.video.videoWidth;
     canvasRef.current.height = webcamRef.current.video.videoHeight;
 
@@ -27,18 +63,21 @@ const UserPose = () => {
       canvasElement.width,
       canvasElement.height
     );
+
     drawConnectors(
       canvasCtx,
       results.poseLandmarks,
       mediapipePose.POSE_CONNECTIONS,
       { color: "white", lineWidth: 3 }
     );
+
     drawLandmarks(canvasCtx, results.poseLandmarks, {
       color: "red",
       lineWidth: 1,
       radius: 3,
     });
     canvasCtx.restore();
+
   }
 
   useEffect(() => {
@@ -81,9 +120,10 @@ const UserPose = () => {
         <canvas
           ref={canvasRef}
           style={{
-            height: '400px'
+            width: '720px'
           }}
         ></canvas>
+
         {/* <Plot
         data={[
           {

@@ -6,6 +6,37 @@ import "./WebCam.css"
 import { Pose } from "@mediapipe/pose";
 import Webcam from "react-webcam";
 
+async function sendRequest(request_body){
+  const API_URL = "http://localhost:8000/calculate";
+  try{
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request_body)
+    });
+    if (!response.ok){
+      throw new Error("Network error try again...");
+    }
+
+    const jsonResponse = await response.json();
+    return jsonResponse;
+  }catch (error){
+    console.log("Excepttion occurred, Failed to connect...");
+  }
+}
+
+/*
+const response = fetch("http://localhost:8000/calculate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request_body)
+    });
+*/
+
 var frame_counter = 0;
 // import Plot from 'react-plotly.js';
 
@@ -21,7 +52,7 @@ const UserPose = () => {
 
     // sending landmarks and frame information as json objects to the API 
 
-    let request_body = {};
+    const request_body = {};
 
     request_body["frame_num"] = frame_counter;
     request_body["frame_height"] = webcamRef.current.video.videoWidth;
@@ -32,6 +63,14 @@ const UserPose = () => {
       request_body['keypoints'][i] = [landmarks[i].x, landmarks[i].y, landmarks[i].z];
     }
     
+    sendRequest(request_body)
+    .then(response => {
+      console.log("Success", response);
+    })
+    .catch(error => {
+      console.log("Error", error);
+    });
+
     /*
     This is how the API should work: 
 
@@ -108,6 +147,8 @@ const UserPose = () => {
       camera.start();
     }
   }, []);
+
+
   return (
     <div className="web-cam">
       <div className="web-cam-cont">

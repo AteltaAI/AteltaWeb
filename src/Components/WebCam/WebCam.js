@@ -5,6 +5,39 @@ import { drawConnectors, drawLandmarks } from "@mediapipe/drawing_utils";
 import "./WebCam.css"
 import { Pose } from "@mediapipe/pose";
 import Webcam from "react-webcam";
+
+async function sendRequest(request_body){
+  const API_URL = "http://localhost:8000/calculate";
+  try{
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request_body)
+    });
+    if (!response.ok){
+      throw new Error("Network error try again...");
+    }
+
+    const jsonResponse = await response.json();
+    return jsonResponse;
+  }catch (error){
+    console.log("Excepttion occurred, Failed to connect...");
+  }
+}
+
+/*
+const response = fetch("http://localhost:8000/calculate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(request_body)
+    });
+*/
+
+var frame_counter = 0;
 // import Plot from 'react-plotly.js';
 
 const UserPose = () => {
@@ -13,8 +46,50 @@ const UserPose = () => {
   let camera = null;
   
   function onResults(results) {
+    frame_counter = frame_counter + 1;
+
     let landmarks = results.poseLandmarks;
-    console.log(landmarks)
+
+    // sending landmarks and frame information as json objects to the API 
+
+    const request_body = {};
+
+    request_body["frame_num"] = frame_counter;
+    request_body["frame_height"] = webcamRef.current.video.videoWidth;
+    request_body["frame_width"] = webcamRef.current.video.videoHeight;
+    request_body['keypoints'] = {}
+
+    for(var i = 0; i<33; i++){
+      request_body['keypoints'][i] = [landmarks[i].x, landmarks[i].y, landmarks[i].z];
+    }
+    
+    sendRequest(request_body)
+    .then(response => {
+      console.log("Success", response);
+    })
+    .catch(error => {
+      console.log("Error", error);
+    });
+
+    /*
+    This is how the API should work: 
+
+    The expected request body should be:
+
+    request_body = {
+      frame_num: frame_counter 
+      frame_height: frame_height, 
+      frame_width: frame_width, 
+      keypoints: {
+        ...
+      }
+    }
+
+    So now we need to apply to send this json object to our python bakend web server, through a POST request. 
+    */
+
+    // end of API request
+
     canvasRef.current.width = webcamRef.current.video.videoWidth;
     canvasRef.current.height = webcamRef.current.video.videoHeight;
 
@@ -27,18 +102,21 @@ const UserPose = () => {
       canvasElement.width,
       canvasElement.height
     );
+
     drawConnectors(
       canvasCtx,
       results.poseLandmarks,
       mediapipePose.POSE_CONNECTIONS,
       { color: "white", lineWidth: 3 }
     );
+
     drawLandmarks(canvasCtx, results.poseLandmarks, {
       color: "red",
       lineWidth: 1,
       radius: 3,
     });
     canvasCtx.restore();
+
   }
 
   useEffect(() => {
@@ -69,6 +147,8 @@ const UserPose = () => {
       camera.start();
     }
   }, []);
+
+
   return (
     <div className="web-cam">
       <div className="web-cam-cont">
@@ -81,9 +161,10 @@ const UserPose = () => {
         <canvas
           ref={canvasRef}
           style={{
-            height: '400px'
+            height: '720px', width: '1080px'
           }}
         ></canvas>
+
         {/* <Plot
         data={[
           {

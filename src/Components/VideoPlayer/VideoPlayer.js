@@ -1,18 +1,18 @@
 import React from 'react'
 import video from "../../Data/vid.mp4"
-import Plyr from "plyr-react"
-import "plyr-react/plyr.css"
+import ReactPlayer from 'react-player'
 import './VideoPlayer.css'
 
-const plyrProps = {
-  source: video,
-  options: undefined,
-}
+function VideoPlayer({autoplay, setAutoplay}) {
 
-function VideoPlayer() {
+  const plyrProps = {
+    source: video,
+    options: {},
+  }
+
   return (
     <div className='video-player'>
-      <Plyr src={video} {...plyrProps} style={{height: '400px'}}/>
+      <ReactPlayer url={require("../../Data/vid.mp4")} controls={true} height="400px" width="auto" playing={autoplay}/>
     </div>
   )
 }

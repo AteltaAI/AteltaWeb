@@ -1,0 +1,10 @@
+.Navbar {
+    display: flex;
+    padding: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
+}
+
+.nav-ele {
+    padding: 0 40px;
+}

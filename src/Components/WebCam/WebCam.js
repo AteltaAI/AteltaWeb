@@ -88,7 +88,12 @@ const UserPose = () => {
     So now we need to apply to send this json object to our python bakend web server, through a POST request. 
     */
 
+
     // end of API request
+    
+    // Send request_body to FastAPI backend
+    fetch("http://0.0.0.0:8080/get_score/", requestbody)
+    .then(response => response.json())
 
     canvasRef.current.width = webcamRef.current.video.videoWidth;
     canvasRef.current.height = webcamRef.current.video.videoHeight;

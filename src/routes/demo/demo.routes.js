@@ -1,8 +1,7 @@
-import './Demo.css';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import WebCam from '../WebCam/WebCam'
+import './demo.styles.css';
+import { WebCam, VideoPlayer } from '../../components';
 import { useState } from 'react';
-import CountDown from './CountDown/CountDown';
+import CountDown from './countdown/count_down.components';
 
 function Demo() {
   const [begin, setBegin] = useState(false);

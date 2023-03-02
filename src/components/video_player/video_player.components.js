@@ -1,5 +1,5 @@
 import React from 'react';
-import video from "../../data/vid.mp4";
+import video from "../../assets/vid.mp4";
 import ReactPlayer from 'react-player';
 import './video_player.styles.css';
 

@@ -1,10 +1,12 @@
 import React from 'react';
+import { Featured, Hero } from '../../components';
 import './home.styles.css';
 
 function Home() {
   return (
     <>
-        Home
+        <Hero/>
+        <Featured/>
     </>
   )
 }

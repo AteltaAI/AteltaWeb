@@ -2,7 +2,7 @@ import * as cam from "@mediapipe/camera_utils";
 import * as mediapipePose from "@mediapipe/pose";
 import React, { useEffect, useRef} from "react";
 import { drawConnectors, drawLandmarks } from "@mediapipe/drawing_utils";
-import "./WebCam.css"
+import "./webcam.styles.css";
 import { Pose } from "@mediapipe/pose";
 import Webcam from "react-webcam";
 

@@ -1,9 +1,8 @@
-import './App.css';
+import { Home, Dashboard, Demo } from './routes';
+import { Navbar } from './components';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Demo from './Components/Demo/Demo';
-import Home from './Components/Home/Home';
-import Navbar from './Components/Navbar/Navbar';
-import Dashboard from './Components/Dashboard/Dashboard'
+import './App.css';
+
 
 function App() {
   return (

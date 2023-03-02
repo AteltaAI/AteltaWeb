@@ -1,6 +1,6 @@
 import React from 'react'
 import Countdown from 'react-countdown'
-import './CountDown.css'
+import './countdown.styles.css'
 
 function CountDown({begin, setBegin, setAutoplay}) {
 

@@ -14,5 +14,5 @@ export NODE_OPTIONS=--openssl-legacy-provider
 Now run the app by running:
 
 ```bash 
-npm start
+npm run start
 ```

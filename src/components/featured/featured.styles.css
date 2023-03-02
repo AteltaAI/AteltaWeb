@@ -1,0 +1,25 @@
+.featured-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-2-img {
+    position: absolute;
+    z-index: -2;
+    left: 0;
+}
+
+.feature-content {
+    /* position: relative; */
+    /* margin-top: 20rem;    */
+    width: 100%;
+}
+
+.ft-background-overlay {
+    background: linear-gradient(90.69deg, #000000 0.62%, rgba(0, 0, 0, 0) 99.43%);
+    transform: rotate(-179.44deg);
+    /* background-color: red; */
+    height: 70rem;
+    width: 60rem;
+}

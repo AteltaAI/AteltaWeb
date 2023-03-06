@@ -5,31 +5,27 @@ import { NavLink } from "react-router-dom";
 function Navbar() {
   const NAV_PATH = [
     {
-      option: "Solutions",
-      route: "/solutions"
+      option: "Add New",
+      route: "/new"
     },
     {
-      option: "Community",
-      route: "/community"
+      option: "Practise",
+      route: "/practise"
     },
     {
-      option: "Developers",
-      route: "/developers"
+      option: "Dashboard",
+      route: "/dashboard"
     },
     {
-      option: "Demo",
-      route: "/demo"
+      option: "About",
+      route: "/about"
     },
-    {
-      option: "Login | Sign Up",
-      route: "/login"
-    }
   ]
 
   return (
     <div className='Navbar'>
       <NavLink to="/" className="logo">
-        <p>Atelta</p>
+        <p>AteltaAI</p>
       </NavLink>
       <div className="nav-right">
         {

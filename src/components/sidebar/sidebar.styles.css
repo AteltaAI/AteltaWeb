@@ -1,0 +1,33 @@
+.thumbnail-sidebar {
+    /* background-color: green; */
+    width: 18rem;
+    height: 100vh;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 2px solid grey;
+    /* border-top: 2px solid grey; */
+}
+
+.thumb-nail {
+    width: 16rem;
+    height: 10rem;
+    background-color: black;
+    margin-bottom: .5rem;
+}
+
+.brg-nav {
+    height: 1.2rem;
+}
+
+.sidebar-content {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-content p {
+    margin: 2rem .5rem;
+}

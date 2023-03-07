@@ -7,40 +7,24 @@
 }
 
 .hero-content {
-    position: relative;
-    width:  30rem;
     margin-top: 15rem;
-    margin-right: 55rem;
-}
-
-.hero-content h1 {
-    font-size: 8rem;
-    line-height: 6rem;
-}
-
-.hero-content p {
-    line-height: 2rem;
-    font-size: 1.5rem;
-}
-
-.background-image-hero {
     display: flex;
-    position: absolute;
-    z-index: -2;
-    right: 0;
-    top: 0;   
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 
-.hero-img {
-    height: 70rem;
+.custom-upload {
+    width: 40rem;
 }
-
-.hero-overlay {
-    /* background-color: green; */
-    height: 70rem;
-    width: 50rem;
-    position: relative;
-    background:  linear-gradient(90.69deg, #000000 0.62%, rgba(0, 0, 0, 0) 99.43%);
-    margin-right: -50rem;
+.secondary-content {
+    margin-top: 3rem;
+    width: 30rem;
+}
+.secondary-content p {
+    font-size: 1.2rem;
+}
+.secondary-content button {
+    margin-top: 2rem;
 }

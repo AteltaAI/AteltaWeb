@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './hero.styles.css';
 
 const Hero = () => {
+
+  const nagigate = useNavigate()
+
+  const HandleDemoNav = () => {
+    nagigate('/demo')
+  }
   return (
     <div className='hero-div'>
 
@@ -11,7 +18,7 @@ const Hero = () => {
         </div>
         <div className="secondary-content">
           <p>We are processing your video in the mean time, please checkout our existing samples</p>
-          <button>PRACTISE</button>
+          <button onClick={() => HandleDemoNav()}>PRACTISE</button>
         </div>
       </div>
     </div>

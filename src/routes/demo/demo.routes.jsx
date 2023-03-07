@@ -13,8 +13,16 @@ function Demo() {
         <VideoPlayer autoplay={autoplay} setAutoplay={setAutoplay}/>
         <WebCam />
       </div>
-      <div className='control-cont'>
+      <div className='control-cont begin-btn'>
         <button onClick={() => setBegin(true)}>Begin</button>
+      </div>
+      <div className='other-video-actions'>
+        <button>Time Elapsed</button>
+        <button>Score</button>
+        <button>Physical Metric</button>
+      </div>
+      <div className='others'>
+        <button>Periodic showcase of appreciation</button>
       </div>
     </div>
   );

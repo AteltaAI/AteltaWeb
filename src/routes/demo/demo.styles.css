@@ -2,8 +2,8 @@
     /* width: 100%; */
     display: flex;
     /* background-color: rebeccapurple; */
-    width: 85rem;
-    margin-left: 18rem;
+    /* width: 85rem; */
+    /* margin-left: 18rem; */
     /* flex-direction: row; */
     /* align-items: center; */
     /* justify-content: space-evenly; */
@@ -26,7 +26,20 @@
     margin-left: 15rem;
 }
 
-button {
+.vid-actions {
+    display: flex;
+    justify-content: space-between; 
+
+    padding: 2rem 1rem;
+}
+
+.center-action * {
+    margin: 0 1rem;
+}
+
+
+
+.button-12 {
     align-self: center;
     background-color: #fff;
     background-image: none;
@@ -59,12 +72,12 @@ button {
 
   }
   
-  button:hover {
+  .button-12:hover {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
     transform: translate3d(0, 2px, 0);
   }
   
-  button:focus {
+  .button-12:focus {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
   }
 
@@ -76,7 +89,7 @@ button {
     margin-top: -2.5rem;
 }
 
-.other-video-actions button {
+.other-video-actions .button-12 {
     margin: 0 2rem;
 }
 
@@ -88,6 +101,6 @@ button {
     margin-top: 1rem;
 }
 
-.others button {
+.others .button-12 {
     width: 35rem;
 }

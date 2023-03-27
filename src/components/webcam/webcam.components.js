@@ -161,7 +161,7 @@ const UserPose = () => {
         <canvas
           ref={canvasRef}
           style={{
-            height: '720px', width: '1080px'
+            height: '720px', width: '100%'
           }}
         ></canvas>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'rsuite';
 import './hero.styles.css';
 
 const Hero = () => {
@@ -14,11 +15,11 @@ const Hero = () => {
 
       <div className="hero-content">
         <div className="upload-btn">
-          <button className='custom-upload'>UPLOAD FILE / PASTE THE YOUTUBE LINK TO DOWNLOAD</button>
+          <Button className='custom-upload'>UPLOAD FILE / PASTE THE YOUTUBE LINK TO DOWNLOAD</Button>
         </div>
         <div className="secondary-content">
           <p>We are processing your video in the mean time, please checkout our existing samples</p>
-          <button onClick={() => HandleDemoNav()}>PRACTISE</button>
+          <Button onClick={() => HandleDemoNav()}>PRACTISE</Button>
         </div>
       </div>
     </div>

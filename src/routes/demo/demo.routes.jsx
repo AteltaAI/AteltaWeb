@@ -1,4 +1,7 @@
 import './demo.styles.css';
+import PlayIcon from '@rsuite/icons/legacy/Play';
+import { ButtonToolbar, Button, IconButton } from 'rsuite';
+
 import { WebCam, VideoPlayer } from '../../components';
 import { useState } from 'react';
 import CountDown from './countdown/count_down.components';
@@ -6,24 +9,35 @@ import CountDown from './countdown/count_down.components';
 function Demo() {
   const [begin, setBegin] = useState(false);
   const [autoplay, setAutoplay] = useState(false);
+
   return (
     <div className="Demo">
-      {begin && <CountDown begin={begin} setBegin={setBegin} setAutoplay={setAutoplay}/>}
+
+
+
+      {begin && <CountDown begin={begin} setBegin={setBegin} setAutoplay={setAutoplay} />}
       <div className='window-cont'>
-        <VideoPlayer autoplay={autoplay} setAutoplay={setAutoplay}/>
+        <VideoPlayer autoplay={autoplay} setAutoplay={setAutoplay} />
         <WebCam />
       </div>
-      <div className='control-cont begin-btn'>
-        <button onClick={() => setBegin(true)}>Begin</button>
+
+      <div className='vid-actions'>
+        <div>
+        <ButtonToolbar>
+          <IconButton icon={<PlayIcon />} onClick={() => setBegin(true)}>
+            Begin | Play
+          </IconButton>
+        </ButtonToolbar>
+        </div>
+        <div className='center-action'>
+          <Button>Time Elapsed</Button>
+          <Button>Score</Button>
+          <Button>Physical Metric</Button>
+          <Button>Periodic showcase of appreciation</Button>
+        </div>
+        <div></div>
       </div>
-      <div className='other-video-actions'>
-        <button>Time Elapsed</button>
-        <button>Score</button>
-        <button>Physical Metric</button>
-      </div>
-      <div className='others'>
-        <button>Periodic showcase of appreciation</button>
-      </div>
+
     </div>
   );
 }
